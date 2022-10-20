@@ -1,16 +1,35 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.f3d47631.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/static/css/main.073625a9.css",
+    "main.js": "/static/js/main.57bab89b.js",
+    "static/js/787.5b8276f7.chunk.js": "/static/js/787.5b8276f7.chunk.js",
+    "static/media/section-six-bg.jpeg": "/static/media/section-six-bg.aea512564e8239de7a2b.jpeg",
+    "static/media/banner.jpeg": "/static/media/banner.a1d56562d2bb1c98423b.jpeg",
+    "static/media/amenities-bg.jpeg": "/static/media/amenities-bg.6edface34a8077b251d4.jpeg",
+    "static/media/section-five-bg.jpeg": "/static/media/section-five-bg.717a4f1739ab839dd548.jpeg",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/makemove-bg.jpeg": "/static/media/makemove-bg.e7c873e4d1b382a12038.jpeg",
+    "static/media/section-two-bg.jpeg": "/static/media/section-two-bg.f068f65f398b4c138d90.jpeg",
+    "static/media/section-seven-bg.jpeg": "/static/media/section-seven-bg.3d3f1db9e879673a5ec1.jpeg",
+    "static/media/section-four-bg.jpeg": "/static/media/section-four-bg.7151ea5d97bfb50cc032.jpeg",
+    "static/media/kit-desk.jpeg": "/static/media/kit-desk.9324ff99816fa149ea2c.jpeg",
+    "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/mobile.jpeg": "/static/media/mobile.49f82b5092ed5ed3dfd1.jpeg",
+    "static/media/opensans-regular-webfont.svg": "/static/media/opensans-regular-webfont.95811c8c83e2a8bd0061.svg",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/opensans-regular-webfont.eot": "/static/media/opensans-regular-webfont.7547a976bbca42b63070.eot",
+    "static/media/opensans-regular-webfont.ttf": "/static/media/opensans-regular-webfont.7a5435b747ec2fb23986.ttf",
+    "static/media/opensans-regular-webfont.woff": "/static/media/opensans-regular-webfont.7adf771f5e31856b988c.woff",
+    "static/media/opensans-regular-webfont.woff2": "/static/media/opensans-regular-webfont.aebbc0dcf4ed39b5d1bc.woff2",
     "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.f3d47631.js.map": "/static/js/main.f3d47631.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.073625a9.css.map": "/static/css/main.073625a9.css.map",
+    "main.57bab89b.js.map": "/static/js/main.57bab89b.js.map",
+    "787.5b8276f7.chunk.js.map": "/static/js/787.5b8276f7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.f3d47631.js"
+    "static/css/main.073625a9.css",
+    "static/js/main.57bab89b.js"
   ]
 }
