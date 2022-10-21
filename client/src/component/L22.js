@@ -1,15 +1,7 @@
-import React, {useState} from 'react';
-import Button from 'react-bootstrap/esm/Button';
-import Modal from 'react-bootstrap/Modal';
-import images from '../assets/images/kit-desk.jpeg';
+import React from 'react';
 import RequestBrochure from './RequestBrochure';
 
 const L22 = () => {
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     return (
         <>
             <section className="section-five-bg d-lg-block d-md-block d-sm-none d-none">
@@ -24,12 +16,12 @@ const L22 = () => {
                                     <b>L22</b>
                                 </h4>
                                 <div className="specification-bg text-center">
-                                    <p className="">Reference Saleable Area : 2530 sq.ft</p>
-                                    <p className="">Built-up Area : 2024 sq.ft.</p>
-                                    <p className="">Carpet Area : 1607 sq.ft.</p>
-                                    <p className="">Terrace garden : 223 sq.ft.</p>
-                                    <p className="">Type : 3 Bedroom</p>
-                                    <p className="">Price : Starting at 3.26Cr + GST @5%</p>
+                                    <p className="pText">Reference Saleable Area : 2530 sq.ft</p>
+                                    <p className="pText">Built-up Area : 2024 sq.ft.</p>
+                                    <p className="pText">Carpet Area : 1607 sq.ft.</p>
+                                    <p className="pText">Terrace garden : 223 sq.ft.</p>
+                                    <p className="pText">Type : 3 Bedroom</p>
+                                    <p className="pText">Price : Starting at 3.26Cr + GST @5%</p>
                                 </div>
                             </div>
                             <div className="col-lg-8 align-self-center">
@@ -47,28 +39,7 @@ const L22 = () => {
                                 <p />
                                 <div className="text-center">
                                     <RequestBrochure/>
-                                    <div className="d-block d-sm-block d-md-none d-lg-none">
-                                        <a
-                                            data-toggle="modal"
-                                            data-target="#myModal"
-                                            className="scroll mont-reg"
-                                        >
-                                            <button
-                                                style={{
-                                                    width: "auto",
-                                                    border: "1px solid #fff",
-                                                    cursor: "pointer",
-                                                    backgroundColor: "#872b20 !important",
-                                                    color: "#fff !important",
-                                                    fontWeight: "bold"
-                                                }}
-                                                type="submit"
-                                                className="submit-btn btn btn-primary text-uppercase"
-                                            >
-                                                <strong>Request Brochure</strong>
-                                            </button>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -90,12 +61,12 @@ const L22 = () => {
                                             L22
                                         </h3>
                                         <div className="specification-bg text-center">
-                                            <p className="">Reference Saleable Area : 2530 sq.ft</p>
-                                            <p className="">Built-up Area : 2024 sq.ft.</p>
-                                            <p className="">Carpet Area : 1607 sq.ft.</p>
-                                            <p className="">Terrace garden : 223 sq.ft.</p>
-                                            <p className="">Type : 3 Bedroom</p>
-                                            <p className="">Price : Starting at 3.26Cr + GST @5%</p>
+                                            <p className="pText">Reference Saleable Area : 2530 sq.ft</p>
+                                            <p className="pText">Built-up Area : 2024 sq.ft.</p>
+                                            <p className="pText">Carpet Area : 1607 sq.ft.</p>
+                                            <p className="pText">Terrace garden : 223 sq.ft.</p>
+                                            <p className="pText">Type : 3 Bedroom</p>
+                                            <p className="pText">Price : Starting at 3.26Cr + GST @5%</p>
                                         </div>
                                         <p className="mt-20 mont-reg fs-18 fs-xs-14 fs-sm-14 text-justify"></p>
                                         <p className="text-justify"></p>
@@ -113,48 +84,10 @@ const L22 = () => {
                                         <p />
                                         <div className="text-center">
                                             <div className="d-none d-sm-none d-md-block d-lg-block ">
-                                                <a
-                                                    data-toggle="modal"
-                                                    data-target="#myModal"
-                                                    className="scroll mont-reg"
-                                                >
-                                                    <button
-                                                        style={{
-                                                            width: "auto",
-                                                            border: "1px solid #fff",
-                                                            cursor: "pointer",
-                                                            backgroundColor: "#872b20 !important",
-                                                            color: "#fff !important",
-                                                            fontWeight: "bold"
-                                                        }}
-                                                        type="submit"
-                                                        className="submit-btn btn btn-primary text-uppercase"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
-                                                </a>
+                                                <RequestBrochure />
                                             </div>
                                             <div className="d-block d-sm-block d-md-none d-lg-none">
-                                                <a
-                                                    data-toggle="modal"
-                                                    data-target="#myModal"
-                                                    className="scroll mont-reg"
-                                                >
-                                                    <button
-                                                        style={{
-                                                            width: "auto",
-                                                            border: "1px solid #fff",
-                                                            cursor: "pointer",
-                                                            backgroundColor: "#872b20 !important",
-                                                            color: "#fff !important",
-                                                            fontWeight: "bold"
-                                                        }}
-                                                        type="submit"
-                                                        className="submit-btn btn btn-primary text-uppercase"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
-                                                </a>
+                                                <RequestBrochure />
                                             </div>
                                         </div>
                                     </div>

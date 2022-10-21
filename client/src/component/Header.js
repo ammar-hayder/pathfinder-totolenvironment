@@ -1,5 +1,6 @@
 import React from 'react'
 var dcslogo = require('../assets/images/dcslogo.png')
+
 const Header = () => {
   return (
     <header id="masthead" className="site-header">
@@ -46,7 +47,7 @@ const Header = () => {
                                     className="fa fa-phone"
                                     aria-hidden="true"
                                 />{" "}
-                                <span style={{ color: "#fff" }}> +91 99450 55700</span>
+                                <span style={{ color: "#fff" }}>  +91 93800 71695</span>
                             </div>
                         </div>
                     </div>

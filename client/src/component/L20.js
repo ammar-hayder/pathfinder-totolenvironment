@@ -1,22 +1,10 @@
-import React, { useState } from 'react'
-import images from '../assets/images/kit-desk.jpeg';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import ReCAPTCHA from "react-google-recaptcha";
-import Image from 'react-bootstrap/Image'
+import React from 'react'
 import RequestBrochure from './RequestBrochure';
 
 
 const L20 = () => {
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const onChange = () => { }
-
     return (
-        <div>
+        <>
             <section className="section-four-bg d-lg-block d-md-block d-sm-none d-none">
                 <div className="col-12 mt-20 section-four-overlay wow fadeIn align-self-center">
                     <div className="container">
@@ -49,12 +37,12 @@ const L20 = () => {
                                     <b>L20</b>
                                 </h4>
                                 <div className="specification-bg text-center">
-                                    <p className="">Reference Saleable Area : 2430 sq.ft.</p>
-                                    <p className="">Built-up Area : 1944 sq.ft.</p>
-                                    <p className="">Carpet Area : 1506 sq.ft.</p>
-                                    <p className="">Terrace Garden : 163 sq.ft.</p>
-                                    <p className="">Type : 3 Bedroom</p>
-                                    <p className="">Price : Starting at 3.06Cr + GST @5% </p>
+                                    <p className="pText">Reference Saleable Area : 2430 sq.ft.</p>
+                                    <p className="pText">Built-up Area : 1944 sq.ft.</p>
+                                    <p className="pText">Carpet Area : 1506 sq.ft.</p>
+                                    <p className="pText">Terrace Garden : 163 sq.ft.</p>
+                                    <p className="pText">Type : 3 Bedroom</p>
+                                    <p className="pText">Price : Starting at 3.06Cr + GST @5% </p>
                                 </div>
                             </div>
                         </div>
@@ -76,12 +64,12 @@ const L20 = () => {
                                             L20
                                         </h3>
                                         <div className="specification-bg text-center">
-                                            <p className="">Reference Saleable Area : 2430 sq.ft.</p>
-                                            <p className="">Built-up Area : 1944 sq.ft.</p>
-                                            <p className="">Carpet Area : 1506 sq.ft.</p>
-                                            <p className="">Terrace Garden : 163 sq.ft.</p>
-                                            <p className="">Type : 3 Bedroom</p>
-                                            <p className="">Price : Starting at 3.06Cr + GST @5% </p>
+                                            <p className="pText">Reference Saleable Area : 2430 sq.ft.</p>
+                                            <p className="pText">Built-up Area : 1944 sq.ft.</p>
+                                            <p className="pText">Carpet Area : 1506 sq.ft.</p>
+                                            <p className="pText">Terrace Garden : 163 sq.ft.</p>
+                                            <p className="pText">Type : 3 Bedroom</p>
+                                            <p className="pText">Price : Starting at 3.06Cr + GST @5% </p>
                                         </div>
                                         <p className="mt-20 mont-reg fs-18 fs-xs-14 fs-sm-14 text-justify"></p>
                                         <ul className="mont-reg fs-16">
@@ -98,32 +86,10 @@ const L20 = () => {
                                         <p />
                                         <div className="text-center">
                                             <div className="d-none d-sm-none d-md-block d-lg-block ">
-                                                <a
-                                                    data-toggle="modal"
-                                                    data-target="#myModal"
-                                                    className="scroll mont-reg"
-                                                >
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-primary text-uppercase small"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
-                                                </a>
+                                                <RequestBrochure />
                                             </div>
                                             <div className="d-block d-sm-block d-md-none d-lg-none">
-                                                <a
-                                                    data-toggle="modal"
-                                                    data-target="#myModal"
-                                                    className="scroll mont-reg"
-                                                >
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-primary text-uppercase small-submit-btn"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
-                                                </a>
+                                                <RequestBrochure />
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +99,7 @@ const L20 = () => {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 

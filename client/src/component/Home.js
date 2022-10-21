@@ -14,6 +14,7 @@ import Example from './Example'
 import D35 from './D35'
 import Whatsapp from './Whatsapp'
 import ContactUs from './ContactUs'
+import FixedPhone from './FixedPhone'
 
 
 const Home = () => {
@@ -21,20 +22,20 @@ const Home = () => {
         <>
             <Header />
             <Section1 />
-            <Section2/>
-            <L20/>
-            <L22/>
-            <R25/>
-            <D35/>
-            <Amenities/>
-            <Location/>
-            <ContactUs/>
-            <Footer/>
-            <Whatsapp/>
-            <Dummydiv/>
-            <Fixedfooter/>
-            <Example/>  
-            
+            <Section2 />
+            <L20 />
+            <L22 />
+            <R25 />
+            <D35 />
+            <Amenities />
+            <Location />
+            <ContactUs />
+            <Footer />
+            <Whatsapp />
+            <Dummydiv />
+            <Fixedfooter />
+            <Example />
+            <FixedPhone />
         </>
     )
 }

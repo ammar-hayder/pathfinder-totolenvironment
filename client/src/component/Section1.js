@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'font-awesome/css/font-awesome.min.css';
-var mobile = require('../assets/images/mobile.jpeg');
+var mobile = require('../assets/images/mobile 2.jpeg');
 var banner = require('../assets/images/banner.jpeg');
 
 async function postData(url = '', data = {}) {
@@ -24,10 +24,10 @@ async function postData(url = '', data = {}) {
 const Section1 = () => {
     const { name, setName } = useState('')
     const submitData = () => {
-        
 
-        
-        postData('https://example.com/answer', {name:'ammar'})
+
+
+        postData('https://example.com/answer', { name: 'ammar' })
             .then((data) => {
                 console.log('successfull', data); // JSON data parsed by `data.json()` call
             });
@@ -236,8 +236,8 @@ const Section1 = () => {
                                     <hr />
                                     <h6 className="mont-reg fs-xs-20 fs-sm-20 mb-10 mb-xs-10 mb-sm-10">
                                         <b>
-                                            Inaugural discount of INR 500/-sft Valid till 16th October
-                                            2022
+                                            {/* Inaugural discount of INR 500/-sft Valid till 16th October
+                                            2022 */}
                                         </b>
                                     </h6>
                                     <hr />
@@ -446,13 +446,13 @@ const Section1 = () => {
                                                 <b>Exclusive, Limited-Period Offers</b>
                                             </h4>
                                             <hr />
-                                            <h6 className="mont-reg fs-xs-20 fs-sm-20 mb-10 mb-xs-10 mb-sm-10">
+                                            {/* <h6 className="mont-reg fs-xs-20 fs-sm-20 mb-10 mb-xs-10 mb-sm-10">
                                                 <b>
                                                     Inaugural discount of INR 500/-sft Valid till 16th October
                                                     2022
                                                 </b>
-                                            </h6>
-                                            <hr />
+                                            </h6> */}
+                                            {/* <hr /> */}
                                             <h6 className="mont-reg fs-xs-20 fs-sm-20 mb-10 mb-xs-10 mb-sm-10">
                                                 <b>30-20-50 Payment Plan</b>
                                             </h6>

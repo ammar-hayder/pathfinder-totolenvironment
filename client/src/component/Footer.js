@@ -10,7 +10,7 @@ const Footer = () => {
                             <div className="fs-14">
                                 <p className="color-white open-sans">
                                     Marketed By - Authorised Channel Partner, RERA Registration No -
-                                    PRM/KA/RERA/1251/446/AG/201012/002062
+                                    PRM/KA/RERA/1251/446/AG/190125/001250
                                 </p>
                                 <p className="color-white open-sans">
                                     Disclaimer : The content mentioned in this website is for
@@ -22,7 +22,8 @@ const Footer = () => {
                                     the mobile / email id registered with us. All Rights Reserved.
                                     <br />
                                     Phase 1:PRM/KA/RERA/1251/446/PR/171014/000433 <br />
-                                    Phase 2:PRM/KA/RERA/1251/446/PR/190102/002271
+                                    Phase 2:PRM/KA/RERA/1251/446/PR/190102/002271 <br />
+                                    Phase 3:PRM/KA/RERA/1251/446/PR/220922/005261
                                 </p>
                                 <p className="color-white open-sans">
                                     *Price includes base price excluding GST, stamp duty, registration

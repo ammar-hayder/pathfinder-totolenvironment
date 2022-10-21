@@ -1,8 +1,5 @@
 import React from 'react'
 
-
-
-
 const ContactUs = () => {
     return (
         <section
@@ -171,10 +168,10 @@ const ContactUs = () => {
                                 className="section-one-padding wow fadeIn align-self-center"
                                 data-wow-delay="0.2s"
                             >
-                                <a href="https://wa.me/+919901365758">
+                                <a href="https://wa.me/+919380071695">
                                     <h4 className="mont-reg fs-xs-20 fs-sm-20 text-white mb-10 mb-xs-10 mb-sm-10">
                                         <b>
-                                            <i className="fa fa-whatsapp" /> &nbsp; +91 99450 55700
+                                            <i className="fa fa-whatsapp" /> &nbsp; +91 93800 71695
                                         </b>
                                     </h4>
                                 </a>
@@ -183,7 +180,7 @@ const ContactUs = () => {
                                     <h4 className="mont-reg fs-xs-20 fs-sm-20 text-white mb-10 mb-xs-10 mb-sm-10">
                                         <b>
                                             <i className="fa fa-phone" style={{ border: "none" }} /> +91
-                                            99450 55700
+                                            93800 71695
                                         </b>
                                     </h4>
                                 </a>

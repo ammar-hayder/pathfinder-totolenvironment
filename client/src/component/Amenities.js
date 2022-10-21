@@ -85,36 +85,10 @@ const Amenities = () => {
                                             </ul>
                                             <div className="text-center">
                                                 <div className="d-none d-sm-none d-md-block d-lg-block ">
-                                                    <button
-                                                        style={{
-                                                            width: "auto",
-                                                            border: "1px solid #fff",
-                                                            cursor: "pointer",
-                                                            backgroundColor: "#872b20 !important",
-                                                            color: "#fff !important",
-                                                            fontWeight: "bold"
-                                                        }}
-                                                        type="submit"
-                                                        className="submit-btn btn btn-primary text-uppercase"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
+                                                    <RequestBrochure />
                                                 </div>
                                                 <div className="d-block d-sm-block d-md-none d-lg-none">
-                                                    <button
-                                                        style={{
-                                                            width: "auto",
-                                                            border: "1px solid #fff",
-                                                            cursor: "pointer",
-                                                            backgroundColor: "#872b20 !important",
-                                                            color: "#fff !important",
-                                                            fontWeight: "bold"
-                                                        }}
-                                                        type="submit"
-                                                        className="submit-btn btn btn-primary text-uppercase"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
+                                                    <RequestBrochure />
                                                 </div>
                                             </div>
                                         </div>

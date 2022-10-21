@@ -16,12 +16,12 @@ const D35 = () => {
                                     <b>D35</b>
                                 </h4>
                                 <div className="specification-bg text-center">
-                                    <p className="">Reference Saleable Area : 4596 sq.ft.</p>
-                                    <p className="">Built-up Area : 3676 sq.ft.</p>
-                                    <p className="">Carpet Area : 2660 sq.ft.</p>
-                                    <p className="">Terrace Garden : 510 sq.ft.</p>
-                                    <p className="">Type : 3 Bedroom Duplex</p>
-                                    <p className="">Price : Starting 6.09Cr + GST @5% </p>
+                                    <p className="pText">Reference Saleable Area : 4596 sq.ft.</p>
+                                    <p className="pText">Built-up Area : 3676 sq.ft.</p>
+                                    <p className="pText">Carpet Area : 2660 sq.ft.</p>
+                                    <p className="pText">Terrace Garden : 510 sq.ft.</p>
+                                    <p className="pText">Type : 3 Bedroom Duplex</p>
+                                    <p className="pText">Price : Starting 6.09Cr + GST @5% </p>
                                 </div>
                             </div>
                             <div className="col-lg-8 align-self-center">
@@ -76,12 +76,12 @@ const D35 = () => {
                                             D35
                                         </h3>
                                         <div className="specification-bg text-center">
-                                            <p className="">Reference Saleable Area : 4596 sq.ft.</p>
-                                            <p className="">Built-up Area : 3676 sq.ft.</p>
-                                            <p className="">Carpet Area : 2660 sq.ft.</p>
-                                            <p className="">Terrace Garden : 510 sq.ft.</p>
-                                            <p className="">Type : 3 Bedroom Duplex</p>
-                                            <p className="">Price : Starting 6.09Cr + GST @5% </p>
+                                            <p className="pText">Reference Saleable Area : 4596 sq.ft.</p>
+                                            <p className="pText">Built-up Area : 3676 sq.ft.</p>
+                                            <p className="pText">Carpet Area : 2660 sq.ft.</p>
+                                            <p className="pText">Terrace Garden : 510 sq.ft.</p>
+                                            <p className="pText">Type : 3 Bedroom Duplex</p>
+                                            <p className="pText">Price : Starting 6.09Cr + GST @5% </p>
                                         </div>
                                         <p className="mt-20 mont-reg f"></p>
                                         <ul className="fs-18 fs-xs-14 fs-sm-14 text-justify">
@@ -97,36 +97,10 @@ const D35 = () => {
                                         <p />
                                         <div className="text-center">
                                             <div className="d-none d-sm-none d-md-block d-lg-block ">
-                                                <button
-                                                    style={{
-                                                        width: "auto",
-                                                        border: "1px solid #fff",
-                                                        cursor: "pointer",
-                                                        backgroundColor: "#872b20 !important",
-                                                        color: "#fff !important",
-                                                        fontWeight: "bold"
-                                                    }}
-                                                    type="submit"
-                                                    className="submit-btn btn btn-primary text-uppercase"
-                                                >
-                                                    <strong>Request Brochure</strong>
-                                                </button>
+                                                <RequestBrochure />
                                             </div>
                                             <div className="d-block d-sm-block d-md-none d-lg-none">
-                                                <button
-                                                    style={{
-                                                        width: "auto",
-                                                        border: "1px solid #fff",
-                                                        cursor: "pointer",
-                                                        backgroundColor: "#872b20 !important",
-                                                        color: "#fff !important",
-                                                        fontWeight: "bold"
-                                                    }}
-                                                    type="submit"
-                                                    className="submit-btn btn btn-primary text-uppercase"
-                                                >
-                                                    <strong>Request Brochure</strong>
-                                                </button>
+                                                <RequestBrochure />
                                             </div>
                                         </div>
                                     </div>

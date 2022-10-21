@@ -28,20 +28,7 @@ const R25 = () => {
                                 <p />
                                 <div className="text-center">
                                    <RequestBrochure/>
-                                    <div className="d-block d-sm-block d-md-none d-lg-none">
-                                        <a
-                                            data-toggle="modal"
-                                            data-target="#myModal"
-                                            className="scroll mont-reg"
-                                        >
-                                            <button
-                                                type="submit"
-                                                className="btn btn-primary text-uppercase small-submit-btn"
-                                            >
-                                                <strong>Request Brochure</strong>
-                                            </button>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div className="col-lg-4 wow fadeIn" data-wow-delay="0.2s">
@@ -49,12 +36,12 @@ const R25 = () => {
                                     <b>R25</b>
                                 </h4>
                                 <div className="specification-bg text-center">
-                                    <p className="">Reference Saleable Area : 3434 sq.ft</p>
-                                    <p className="">Built-up Area : 2747 sq.ft.</p>
-                                    <p className="">Carpet Area : 2136 sq.ft.</p>
-                                    <p className="">Terrace Garden : 384 sq.ft.</p>
-                                    <p className="">Type : 3 Bedroom + family room</p>
-                                    <p className="">Price : Starting 4.05Cr + GST @5%</p>
+                                    <p className="pText">Reference Saleable Area : 3434 sq.ft</p>
+                                    <p className="pText">Built-up Area : 2747 sq.ft.</p>
+                                    <p className="pText">Carpet Area : 2136 sq.ft.</p>
+                                    <p className="pText">Terrace Garden : 384 sq.ft.</p>
+                                    <p className="pText">Type : 3 Bedroom + family room</p>
+                                    <p className="pText">Price : Starting 4.05Cr + GST @5%</p>
                                 </div>
                             </div>
                         </div>
@@ -76,12 +63,12 @@ const R25 = () => {
                                             R25
                                         </h3>
                                         <div className="specification-bg text-center">
-                                            <p className="">Reference Saleable Area : 3434 sq.ft</p>
-                                            <p className="">Built-up Area : 2747 sq.ft.</p>
-                                            <p className="">Carpet Area : 2136 sq.ft.</p>
-                                            <p className="">Terrace Garden : 384 sq.ft.</p>
-                                            <p className="">Type : 3 Bedroom + family room</p>
-                                            <p className="">Price : Starting 4.05Cr + GST @5%</p>
+                                            <p className="pText">Reference Saleable Area : 3434 sq.ft</p>
+                                            <p className="pText">Built-up Area : 2747 sq.ft.</p>
+                                            <p className="pText">Carpet Area : 2136 sq.ft.</p>
+                                            <p className="pText">Terrace Garden : 384 sq.ft.</p>
+                                            <p className="pText">Type : 3 Bedroom + family room</p>
+                                            <p className="pText">Price : Starting 4.05Cr + GST @5%</p>
                                         </div>
                                         <p className="mt-20 mont-reg text-justify"></p>
                                         <ul className="fs-18 fs-xs-14 fs-sm-14">
@@ -100,48 +87,10 @@ const R25 = () => {
                                         <p />
                                         <div className="text-center">
                                             <div className="d-none d-sm-none d-md-block d-lg-block ">
-                                                <a
-                                                    data-toggle="modal"
-                                                    data-target="#myModal"
-                                                    className="scroll mont-reg"
-                                                >
-                                                    <button
-                                                        style={{
-                                                            width: "auto",
-                                                            border: "1px solid #fff",
-                                                            cursor: "pointer",
-                                                            backgroundColor: "#872b20 !important",
-                                                            color: "#fff !important",
-                                                            fontWeight: "bold"
-                                                        }}
-                                                        type="submit"
-                                                        className="submit-btn btn btn-primary text-uppercase"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
-                                                </a>
+                                                <RequestBrochure />
                                             </div>
                                             <div className="d-block d-sm-block d-md-none d-lg-none">
-                                                <a
-                                                    data-toggle="modal"
-                                                    data-target="#myModal"
-                                                    className="scroll mont-reg"
-                                                >
-                                                    <button
-                                                        style={{
-                                                            width: "auto",
-                                                            border: "1px solid #fff",
-                                                            cursor: "pointer",
-                                                            backgroundColor: "#872b20 !important",
-                                                            color: "#fff !important",
-                                                            fontWeight: "bold"
-                                                        }}
-                                                        type="submit"
-                                                        className="submit-btn btn btn-primary text-uppercase"
-                                                    >
-                                                        <strong>Request Brochure</strong>
-                                                    </button>
-                                                </a>
+                                                <RequestBrochure />
                                             </div>
                                         </div>
                                     </div>
