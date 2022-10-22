@@ -176,7 +176,7 @@ const ContactUs = () => {
                                     </h4>
                                 </a>
                                 <hr />
-                                <a href="tel:+919901365758">
+                                <a href="tel:+919380071695">
                                     <h4 className="mont-reg fs-xs-20 fs-sm-20 text-white mb-10 mb-xs-10 mb-sm-10">
                                         <b>
                                             <i className="fa fa-phone" style={{ border: "none" }} /> +91

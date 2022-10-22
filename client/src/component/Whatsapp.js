@@ -18,6 +18,7 @@ const Whatsapp = () => {
       <a href="tel:+919380071695" className="" style={{
             fontSize: 20,
             color: "#fff",
+            backgroundColor: "#25D366",
           }}>
         
         <span class="badge badge-secondary"> <i
