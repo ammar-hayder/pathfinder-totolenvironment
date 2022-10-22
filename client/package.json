@@ -1,7 +1,6 @@
 {
   "name": "total-environment",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {
     "@formspree/react": "^2.4.0",

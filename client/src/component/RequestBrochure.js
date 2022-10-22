@@ -5,22 +5,24 @@ import Modal from 'react-bootstrap/Modal';
 import ReCAPTCHA from "react-google-recaptcha";
 import Image from 'react-bootstrap/Image';
 
-const RequestBrochure = () => {
+const RequestBrochure = ({ theme = 'desktop' }) => {
+    console.log(theme)
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const onChange = () => { }
     return (
         <>
-            <div className="text-center">
+            {(theme === 'mobile') ? <a href="#" onClick={handleShow} className="scroll" aria-label="Enquire now">
+                Enquire
+            </a> : <div className="text-center">
                 <button onClick={handleShow}
                     type="submit"
-                    className=" btn btn-primary small-submit-btn small-submit-btn:hover text-uppercase"
+                    className=" btn small-submit-btn small-submit-btn:hover text-uppercase"
                 >
                     <strong>Request Brochure</strong>
                 </button>
-            </div>
+            </div>}
             <Modal show={show} onHide={handleClose} dialogClassName="modal-main">
                 <Modal.Header >
                     <button type="button" className="close " onClick={handleClose}>

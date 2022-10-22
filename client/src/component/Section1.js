@@ -233,7 +233,7 @@ const Section1 = () => {
                                     <h4 className="mont-reg fs-xs-20 fs-sm-20 mb-10 mb-xs-10 mb-sm-10">
                                         <b>Exclusive, Limited-Period Offers</b>
                                     </h4>
-                                    <hr />
+                                    
                                     <h6 className="mont-reg fs-xs-20 fs-sm-20 mb-10 mb-xs-10 mb-sm-10">
                                         <b>
                                             {/* Inaugural discount of INR 500/-sft Valid till 16th October

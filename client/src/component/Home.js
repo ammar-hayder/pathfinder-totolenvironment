@@ -1,6 +1,5 @@
 import React from 'react'
-import Header from './Header'
-import Section1 from './Section1'
+ import Section1 from './Section1'
 import Section2 from './Section2'
 import L20 from './L20'
 import L22 from './L22'
@@ -20,7 +19,6 @@ import FixedPhone from './FixedPhone'
 const Home = () => {
     return (
         <>
-            <Header />
             <Section1 />
             <Section2 />
             <L20 />
@@ -34,7 +32,7 @@ const Home = () => {
             <Whatsapp />
             <Dummydiv />
             <Fixedfooter />
-            <Example />
+            {/* <Example /> */}
             <FixedPhone />
         </>
     )
