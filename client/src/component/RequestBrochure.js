@@ -6,7 +6,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Image from 'react-bootstrap/Image';
 
 const RequestBrochure = ({ theme = 'desktop' }) => {
-    console.log(theme)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
