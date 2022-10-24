@@ -1,4 +1,6 @@
 import React from 'react'
+import "font-awesome/css/font-awesome.min.css";
+import { MdPhoneMissed } from 'react-icons/md';
 
 const Whatsapp = () => {
   return (
@@ -12,7 +14,6 @@ const Whatsapp = () => {
             fontSize: '32px',
             backgroundColor: 'rgb(37, 211, 102)',
             color: 'rgb(255, 255, 255)',
-            padding: '4px',
             borderRadius:' 50% 50% 50% 0%',
             width: '36px',
             height: '36px',
@@ -23,14 +24,29 @@ const Whatsapp = () => {
         />
       </a>
       <br />
-      <a href="tel:+919380071695" className="" >
+      <a href="tel:+919380071695" className="btn btn-raised" style={{
 
-
-
-        <div id="chat-circle" className="btn btn-raised" style={{}} />
-        <div id="chat-overlay" />
-        <p className='font'>Miss Call</p>
-
+        color: 'white',
+        backgroundColor: 'red',
+        padding: '0px',
+        lineHeight: '1.2',
+        width:' 34px',
+        height: '34px',
+        fontSize: '24px',
+        marginBottom: '10px',
+        borderRadius: '50%',
+        
+      }}>
+      <MdPhoneMissed />
+      
+     
+       
+     
+        {/* <div id="chat-circle" className="btn btn-raised" style={{}} /> */}
+        
+        {/* <div id="chat-overlay" /> */}
+       
+       
       </a>
     </div>
   )
