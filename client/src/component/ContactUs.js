@@ -1,6 +1,119 @@
-import React from 'react'
+import React, { useState } from "react";
+import axios from "axios";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import  * as utils from '../utils/index.js';
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 const ContactUs = () => {
+    const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  
+
+  const [error, setError] = useState({
+    fullName: false,
+    phone: false,
+    validPhone: false,
+    email: false,
+    validEmail: false,
+  });
+  const [agreeToPromotion, setAgreeToPromotion] = useState(false);
+
+  
+
+  
+
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case "fullName":
+        setFullName(e.target.value);
+
+        break;
+      case "email":
+        setEmail(e.target.value);
+
+        break;
+      case "phone":
+        setPhone(e.target.value);
+        break;
+      default:
+        setError({ ...error });
+    }
+  };
+
+  const submitData = (e) => {
+    e.preventDefault();
+    // const action = 'https://script.google.com/macros/s/AKfycbwUTn_6kDKNifjdho_K7lDqo7SrH6NRxOZQjzA1Nt8ATT4GerAlnPV96CtSsKHWN_C4/exec';
+    // let formData = new FormData();
+    // formData.append('Name', 'ammar')
+    // const config = {
+    //     headers: { 'content-type': 'multipart/form-data' }
+    // }
+
+    const formData = {
+      fullName: fullName,
+      email: email,
+      phone: phone,
+      agree: agreeToPromotion,
+    };
+    console.log(formData);
+    let err = {
+      fullName: false,
+      phone: false,
+      validPhone: false,
+      email: false,
+      validEmail: false,
+    };
+    
+    if (formData.fullName === "") {
+      err.fullName = true;
+    }
+    console.log(err)
+    if (formData.email === '') {
+      err.email = true;
+    } else if (!utils.isEmailValid(formData.email)) {
+      err.validEmail = true;
+    } 
+    if (formData.phone === '') {
+      err.phone = true;
+    } else if (!utils.isPhoneValid(formData.phone)) {
+      err.validPhone = true;
+    }
+    console.log(err);
+    setError({ ...err });
+    if (
+      !err.fullName &&
+      !err.email &&
+      !err.phone &&
+      !err.validEmail &&
+      !err.validPhone
+    ) {
+      axios
+        .post("/contact-us", formData)
+        .then((response) => {
+          console.log(response);
+          setFullName('');
+          setEmail('')
+          setPhone('')
+          toast.success('🦄 Form Submited Successfully!', {
+            toastId:'RequestBrochure',
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
     return (
         <section
             className="contact-section"
@@ -29,44 +142,63 @@ const ContactUs = () => {
                                     method="post"
                                     id="actual-form"
                                     data-toggle="validator"
+                                    onSubmit={submitData}
                                 >
                                     <div className="form-group">
                                         <input
                                             type="text"
-                                            name="Name"
+                                            name="fullName"
                                             className="form-control"
                                             placeholder="Name *"
-                                            pattern="^[a-zA-Z\s]+$"
-                                            required=""
-                                            data-error="Please enter your name"
+                                            onChange={handleChange}
+                                            value={fullName}
                                         />
-                                        <div className="help-block with-errors" />
+                                        {error.fullName && (
+                                        <div className="help-block with-errors err-col">Please enter name</div>
+                                        )}
                                     </div>
                                     <div className="form-group">
                                         <input
                                             type="text"
-                                            name="Phone"
-                                            id="Mobile-mob1"
-                                            onKeyPress="return isNumber(event)"
+                                            name="phone"
+                                            // pattern="^\d{10}$"
                                             className="form-control w-100"
-                                            pattern="^\d{10}$"
                                             placeholder="Contact No *"
                                             required=""
-                                            data-error="Valid number please"
+                                            onChange={handleChange}
+                                            value={phone}
                                         />
-                                        <div className="help-block with-errors" />
+                                        {error.phone && (
+                                            <div className="help-block with-errors err-col">
+                                            Please enter your phone number
+                                            </div>
+                                        )}
+                                        {error.validPhone && (
+                                            <div className="help-block with-errors err-col">
+                                            Please enter valid phone number
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="form-group">
                                         <input
                                             type="email"
-                                            name="Email"
+                                            name="email"
                                             className="form-control"
                                             placeholder="Email *"
-                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                                            required=""
-                                            data-error="Vaild email please"
+                                            // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                            onChange={handleChange}
+                                            value={email}
                                         />
-                                        <div className="help-block with-errors" />
+                                        {error.email && (
+                                        <div className="help-block with-errors err-col">
+                                            Please enter your email
+                                        </div>
+                                        )}
+                                        {error.validEmail && (
+                                        <div className="help-block with-errors err-col">
+                                            Please enter your valid email
+                                        </div>
+                                        )}
                                     </div>
                                     <input
                                         type="hidden"
@@ -75,8 +207,8 @@ const ContactUs = () => {
                                         defaultValue="bottomotp-up"
                                     />
                                     <div
-                                        className="mt-10 form-group mb-0 text-left radio-text"
-                                        style={{ color: "#000 !important" }}
+                                        className="mt-10 form-group mb-0 text-left radio-text err-col"
+                                        // style={{ color: "#000 !important" }}
                                     >
                                         <input
                                             type="radio"
@@ -86,74 +218,17 @@ const ContactUs = () => {
                                         />{" "}
                                         I agree to receive more information
                                     </div>
-                                    <div
-                                        className="g-recaptcha"
-                                        id="rcaptcha"
-                                        data-sitekey="6LfP9A4hAAAAAHtVl5bb1lP1Y9laT_HZRqZbXMxN"
+                                    <ReCAPTCHA
+                                    sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
                                     />
+                                   
                                     <span id="captcha" style={{ color: "red" }} />
                                     <div className="mt-20">
                                         <input
                                             type="submit"
-                                            style={{
-                                                width: "100%",
-                                                border: "none",
-                                                cursor: "pointer",
-                                                backgroundColor: "#872b20 !important",
-                                                color: "#fff !important",
-                                                fontWeight: "bold"
-                                            }}
-                                            className="submit-btn btn btn-primary text-uppercase"
+                                            className="submit-btn btn btn-primary text-uppercase btn-submit"
                                         />
                                     </div>
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="SourceURL"
-                                        defaultValue="https://total-environment-projects.com/pursuit-of-a-radical-rhapsody/?utm_source=Google&utm_medium=Search&utm_campaign=Brand-POARR&gclid=Cj0KCQjwyt-ZBhCNARIsAKH1177v7sZ1T9CQCIy_g6MesmJXaKpbA5cFJjIow0PkXWUvEfWNKrnUMTgaAi0NEALw_wcB"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="Leadsource"
-                                        defaultValue="Google"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="UtmMedium"
-                                        defaultValue="Search"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="UtmCampaign"
-                                        defaultValue="Brand-POARR"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="UtmContent"
-                                        defaultValue="NA"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="utmTerm"
-                                        defaultValue="NA"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="ProjectInterested"
-                                        defaultValue="Total Environment Pursuit of A Radical Rhapsody"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-url"
-                                        name="SourceType"
-                                        defaultValue="Digital"
-                                    />
                                 </form>
                             </div>
                         </div>
@@ -189,6 +264,7 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
+            
         </section>
     )
 }

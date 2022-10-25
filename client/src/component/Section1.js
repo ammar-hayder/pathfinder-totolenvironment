@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "font-awesome/css/font-awesome.min.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import  * as utils from '../utils/index.js';
+import ReCAPTCHA from "react-google-recaptcha";
 
 var mobile = require("../assets/images/mobile 2.jpeg");
 var banner = require("../assets/images/banner.jpeg");
@@ -9,6 +13,7 @@ const Section1 = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [recaptcha, setRecaptcha] = useState(undefined)
 
   const [error, setError] = useState({
     fullName: false,
@@ -16,23 +21,14 @@ const Section1 = () => {
     validPhone: false,
     email: false,
     validEmail: false,
+    recaptcha:false
   });
   const [agreeToPromotion, setAgreeToPromotion] = useState(false);
 
-  const isEmailValid = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
-  const isPhoneValid = (phone) => {
-    console.log(phone);
-    const phoneno = /^\d{10}$/;
-    return phone.match(phoneno);
-  };
-
+  const handleCaptcha = (value)=>{
+    setError({...error, recaptcha:false})
+    setRecaptcha(value)
+  }
   const handleChange = (e) => {
     switch (e.target.name) {
       case "fullName":
@@ -73,22 +69,29 @@ const Section1 = () => {
       validPhone: false,
       email: false,
       validEmail: false,
+      recaptcha: false
     };
-    
+
     if (formData.fullName === "") {
       err.fullName = true;
     }
-    if (formData.email === '') {
+    console.log(err);
+    if (formData.email === "") {
       err.email = true;
-    } else if (!isEmailValid(formData.email)) {
+    } else if (!utils.isEmailValid(formData.email)) {
       err.validEmail = true;
-    } 
-    if (formData.phone === '') {
+    }
+    if (formData.phone === "") {
       err.phone = true;
-    } else if (!isPhoneValid(formData.phone)) {
+    } else if (!utils.isPhoneValid(formData.phone)) {
       err.validPhone = true;
     }
+    if(!recaptcha ){
+      err.recaptcha = true
+    }
+    console.log(err);
     setError({ ...err });
+
     if (
       !err.fullName &&
       !err.email &&
@@ -100,12 +103,27 @@ const Section1 = () => {
         .post("/contact-us", formData)
         .then((response) => {
           console.log(response);
+          setFullName('')
+          setEmail('')
+          setPhone('')
+          toast.success('🦄 Form Submited Successfully!', {
+            toastId:'RequestBrochure',
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         })
         .catch((error) => {
           console.log(error);
         });
     }
   };
+
   return (
     <>
       <section className="slider">
@@ -163,7 +181,9 @@ const Section1 = () => {
                           value={fullName}
                         />
                         {error.fullName && (
-                          <div className="help-block with-errors">Please enter name</div>
+                          <div className="help-block with-errors">
+                            Please enter name
+                          </div>
                         )}
                       </div>
                       <div className="form-group">
@@ -221,16 +241,20 @@ const Section1 = () => {
                         />{" "}
                         I agree to receive more information
                       </div>
-                      <div
-                        className="g-recaptcha"
-                        id="rcaptcha"
-                        data-sitekey="6LfP9A4hAAAAAHtVl5bb1lP1Y9laT_HZRqZbXMxN"
+                      <ReCAPTCHA
+                      sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
+                      onChange={handleCaptcha}
                       />
+                      {error.recaptcha && (
+                          <div className="help-block with-errors">
+                            Please validate captcha
+                          </div>
+                        )}
                       <span id="captcha" style={{ color: "red" }} />
                       <div className="mt-20">
                         <button
                           type="submit"
-                          className="btn btn-primary text-center chunkfive-regular text-uppercase submit-btn"
+                          className="btn btn-primary text-center chunkfive-regular text-uppercase submit-btn btn-submit"
                           id="requestotp"
                         >
                           SUBMIT
@@ -324,44 +348,65 @@ const Section1 = () => {
                     method="post"
                     id="actual-form"
                     data-toggle="validator"
+                    onSubmit={submitData}
                   >
                     <div className="form-group">
                       <input
                         type="text"
-                        name="Name"
+                        name="fullName"
                         className="form-control"
                         placeholder="Name *"
-                        pattern="^[a-zA-Z\s]+$"
-                        required=""
-                        data-error="Please enter your name"
+                        onChange={handleChange}
+                        value={fullName}
                       />
-                      <div className="help-block with-errors" />
+                      {error.fullName && (
+                        <div className="help-block with-errors">
+                          Please enter name
+                        </div>
+                      )}
                     </div>
                     <div className="form-group">
                       <input
                         type="text"
-                        name="Phone"
-                        id="Mobile-mob1"
-                        onKeyPress="return isNumber(event)"
-                        pattern="^\d{10}$"
+                        name="phone"
+                        // pattern="^\d{10}$"
                         className="form-control w-100"
                         placeholder="Contact No *"
                         required=""
-                        data-error="Valid number please"
+                        onChange={handleChange}
+                        value={phone}
                       />
-                      <div className="help-block with-errors" />
+                      {error.phone && (
+                        <div className="help-block with-errors">
+                          Please enter your phone number
+                        </div>
+                      )}
+                      {error.validPhone && (
+                        <div className="help-block with-errors">
+                          Please enter valid phone number
+                        </div>
+                      )}
                     </div>
                     <div className="form-group">
                       <input
                         type="email"
-                        name="Email"
+                        name="email"
                         className="form-control"
                         placeholder="Email *"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                        required=""
-                        data-error="Vaild email please"
+                        // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        onChange={handleChange}
+                        value={email}
                       />
-                      <div className="help-block with-errors" />
+                      {error.email && (
+                        <div className="help-block with-errors">
+                          Please enter your email
+                        </div>
+                      )}
+                      {error.validEmail && (
+                        <div className="help-block with-errors">
+                          Please enter your valid email
+                        </div>
+                      )}
                     </div>
                     <input
                       type="hidden"
@@ -381,74 +426,16 @@ const Section1 = () => {
                       />{" "}
                       I agree to receive more information
                     </div>
-                    <div
-                      className="g-recaptcha"
-                      id="rcaptcha"
-                      data-sitekey="6LfP9A4hAAAAAHtVl5bb1lP1Y9laT_HZRqZbXMxN"
-                    />
+                    <ReCAPTCHA
+                      sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
+                      />
                     <span id="captcha" style={{ color: "red" }} />
                     <div className="mt-20">
                       <input
                         type="submit"
-                        style={{
-                          width: "100%",
-                          border: "none",
-                          cursor: "pointer",
-                          backgroundColor: "#872b20 !important",
-                          color: "#fff !important",
-                          fontWeight: "bold",
-                        }}
-                        className="submit-btn btn btn-primary text-uppercase"
+                        className="submit-btn btn btn-primary text-uppercase btn-submit"
                       />
                     </div>
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="SourceURL"
-                      defaultValue="https://total-environment-projects.com/pursuit-of-a-radical-rhapsody/?utm_source=Google&utm_medium=Search&utm_campaign=Brand-POARR&gclid=Cj0KCQjwyt-ZBhCNARIsAKH1177v7sZ1T9CQCIy_g6MesmJXaKpbA5cFJjIow0PkXWUvEfWNKrnUMTgaAi0NEALw_wcB"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="Leadsource"
-                      defaultValue="Google"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="UtmMedium"
-                      defaultValue="Search"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="UtmCampaign"
-                      defaultValue="Brand-POARR"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="UtmContent"
-                      defaultValue="NA"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="utmTerm"
-                      defaultValue="NA"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="ProjectInterested"
-                      defaultValue="Total Environment Pursuit of A Radical Rhapsody"
-                    />
-                    <input
-                      type="hidden"
-                      className="form-url"
-                      name="SourceType"
-                      defaultValue="Digital"
-                    />
                   </form>
                 </div>
               </div>
@@ -521,6 +508,7 @@ const Section1 = () => {
           </div>
         </div>
       </section>
+     
     </>
   );
 };

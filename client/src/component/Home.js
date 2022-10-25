@@ -1,4 +1,5 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
  import Section1 from './Section1'
 import Section2 from './Section2'
 import L20 from './L20'
@@ -34,6 +35,7 @@ const Home = () => {
             <Fixedfooter />
             {/* <Example /> */}
             <FixedPhone />
+            <ToastContainer />
         </>
     )
 }
