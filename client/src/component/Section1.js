@@ -97,7 +97,8 @@ const Section1 = () => {
       !err.email &&
       !err.phone &&
       !err.validEmail &&
-      !err.validPhone
+      !err.validPhone &&
+      !err.recaptcha
     ) {
       axios
         .post("/contact-us", formData)
