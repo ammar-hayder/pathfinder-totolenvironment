@@ -108,7 +108,7 @@ const Section1 = () => {
           setFullName('')
           setEmail('')
           setPhone('')
-          toast.success('🦄 Form Submited Successfully!', {
+          toast.success('Form Submited Successfully!', {
             toastId:'RequestBrochure',
             position: "top-center",
             autoClose: 5000,
