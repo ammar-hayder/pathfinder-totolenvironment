@@ -8,6 +8,9 @@ const PORT = process.env.HTTP_PORT || 8080;
 const app = express();
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use(cors());
+import axios from 'axios'
+
+const SECRET_KEY = '6LeEELAiAAAAAHyc05duw396PAR1Dt6cTW5NOCDp'
 
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,6 +20,17 @@ app.get('/', (req, res) => {
   res.send('just gonna send it');
 });
 app.post('/contact-us', (req, res) => {
+  
+
+    axios({
+        url: 'https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${contact-us}',
+        method: 'post'
+    }).then(({data})=>{
+        console.log(data);
+    })
+  
+
+
 
     console.log(req.body)
     

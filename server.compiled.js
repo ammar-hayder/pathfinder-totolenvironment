@@ -2,6 +2,7 @@
 
 var _express = _interopRequireDefault(require("express"));
 var _path = _interopRequireDefault(require("path"));
+var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var nodemailer = require("nodemailer");
 var bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ var PORT = process.env.HTTP_PORT || 8080;
 var app = (0, _express["default"])();
 app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build')));
 app.use(cors());
+var SECRET_KEY = '6LeEELAiAAAAAHyc05duw396PAR1Dt6cTW5NOCDp';
 
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({
@@ -20,6 +22,13 @@ app.get('/', function (req, res) {
   res.send('just gonna send it');
 });
 app.post('/contact-us', function (req, res) {
+  (0, _axios["default"])({
+    url: 'https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${contact-us}',
+    method: 'post'
+  }).then(function (_ref) {
+    var data = _ref.data;
+    console.log(data);
+  });
   console.log(req.body);
   var transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",

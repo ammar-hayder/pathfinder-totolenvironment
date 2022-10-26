@@ -852,8 +852,29 @@ margin-top: 5px;
   color: #fff !important;
   font-weight: bold;
 }
-
-
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 180%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: -240px;
+  z-index: 1044;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
 
 
 @media only screen and (min-width: 768px) {

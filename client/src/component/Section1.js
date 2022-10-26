@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef} from "react";
 import axios from "axios";
 import "font-awesome/css/font-awesome.min.css";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ const Section1 = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [recaptcha, setRecaptcha] = useState(undefined)
-
+  const recaptchaRef = useRef();
   const [error, setError] = useState({
     fullName: false,
     phone: false,
@@ -49,6 +49,7 @@ const Section1 = () => {
 
   const submitData = (e) => {
     e.preventDefault();
+    recaptchaRef.current.reset()
     // const action = 'https://script.google.com/macros/s/AKfycbwUTn_6kDKNifjdho_K7lDqo7SrH6NRxOZQjzA1Nt8ATT4GerAlnPV96CtSsKHWN_C4/exec';
     // let formData = new FormData();
     // formData.append('Name', 'ammar')
@@ -61,6 +62,7 @@ const Section1 = () => {
       email: email,
       phone: phone,
       agree: agreeToPromotion,
+      recaptcha:recaptcha,
     };
     console.log(formData);
     let err = {
@@ -75,7 +77,7 @@ const Section1 = () => {
     if (formData.fullName === "") {
       err.fullName = true;
     }
-    console.log(err);
+    console.log('before valid', err);
     if (formData.email === "") {
       err.email = true;
     } else if (!utils.isEmailValid(formData.email)) {
@@ -104,10 +106,10 @@ const Section1 = () => {
       axios
         .post("/contact-us", formData)
         .then((response) => {
-          console.log(response);
           setFullName('')
           setEmail('')
           setPhone('')
+          
           toast.success('Form Submited Successfully!', {
             toastId:'RequestBrochure',
             position: "top-center",
@@ -243,10 +245,11 @@ const Section1 = () => {
                         />{" "}
                         I agree to receive more information
                       </div>
-                      <ReCAPTCHA
-                      sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
-                      onChange={handleCaptcha}
-                      />
+                        <ReCAPTCHA
+                          sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
+                          onChange={handleCaptcha}
+                          ref={recaptchaRef}
+                        />
                       {error.recaptcha && (
                           <div className="help-block with-errors">
                             Please validate captcha
@@ -430,7 +433,7 @@ const Section1 = () => {
                     </div>
                     <ReCAPTCHA
                       sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
-                      />
+                    />
                     <span id="captcha" style={{ color: "red" }} />
                     <div className="mt-20">
                       <input

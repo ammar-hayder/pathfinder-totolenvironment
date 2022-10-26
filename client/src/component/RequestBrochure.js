@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import images from "../assets/images/kit-desk.jpeg";
 // import Button from 'react-bootstrap/Button';
 import Modal from "react-bootstrap/Modal";
-import ReCAPTCHA from "react-google-recaptcha";
 import Image from "react-bootstrap/Image";
 import axios from "axios";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import  * as utils from '../utils/index.js';
+import * as utils from "../utils/index.js";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const FormModal = ({modalClose}) => {
+const FormModal = ({ modalClose }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const onChange = () => {};
+  const [recaptcha, setRecaptcha] = useState(undefined);
+  const recaptchaRef = useRef();
   const [error, setError] = useState({
     fullName: false,
     phone: false,
@@ -22,7 +23,11 @@ const FormModal = ({modalClose}) => {
     validEmail: false,
   });
   const [agreeToPromotion, setAgreeToPromotion] = useState(false);
- 
+
+  const handleCaptcha = (value) => {
+    setError({ ...error, recaptcha: false });
+    setRecaptcha(value);
+  };
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -44,6 +49,7 @@ const FormModal = ({modalClose}) => {
 
   const submitData = (e) => {
     e.preventDefault();
+    recaptchaRef.current.reset();
     // const action = 'https://script.google.com/macros/s/AKfycbwUTn_6kDKNifjdho_K7lDqo7SrH6NRxOZQjzA1Nt8ATT4GerAlnPV96CtSsKHWN_C4/exec';
     // let formData = new FormData();
     // formData.append('Name', 'ammar')
@@ -92,22 +98,22 @@ const FormModal = ({modalClose}) => {
       axios
         .post("/contact-us", formData)
         .then((response) => {
-            setFullName('')
-            setEmail('')
-            setPhone('')
-            modalClose()
-            console.log('hello')
-            toast.success('🦄 Form Submited Successfully!', {
-                toastId:'RequestBrochure',
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
+          setFullName("");
+          setEmail("");
+          setPhone("");
+          modalClose();
+
+          toast.success("Form Submited Successfully!", {
+            toastId: "RequestBrochure",
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -115,8 +121,7 @@ const FormModal = ({modalClose}) => {
     }
   };
   return (
-    <>
-    <Modal.Body>
+    <div className="modal-body">
       <div className="row align-self-center">
         <div className="col-12 col-md-6 padding-5 d-lg-none d-md-none d-sm-block d-block">
           {/* <Image roundedCircle={true} src={images} /> */}
@@ -158,7 +163,6 @@ const FormModal = ({modalClose}) => {
                       </div>
                     )}
                   </div>
-
                   <div className="form-group">
                     <input
                       type="text"
@@ -202,28 +206,28 @@ const FormModal = ({modalClose}) => {
                       </div>
                     )}
                   </div>
+                  {/* <input
+                      type="hidden"
+                      id="header-form-action"
+                      name="form-action"
+                      defaultValue="pop-up"
+                    /> */}
+                  {/* <div
+                      className="mt-10 form-group mb-0 text-left radio-text"
+                      style={{ color: "#000 !important" }}
+                    /> */}
                   <input
-                    type="hidden"
-                    id="header-form-action"
-                    name="form-action"
-                    defaultValue="pop-up"
-                  />
-                  <div
-                    className="mt-10 form-group mb-0 text-left radio-text"
-                    style={{ color: "#000 !important" }}
-                  >
-                    <input
-                      type="radio"
-                      name="agree"
-                      defaultChecked=""
-                      defaultValue="I agree to receive more information on this project"
-                    />{" "}
-                    I agree to receive more information
-                  </div>
+                    type="radio"
+                    name="agree"
+                    defaultChecked=""
+                    defaultValue="I agree to receive more information on this project"
+                  />{" "}
+                  I agree to receive more information
                   <ReCAPTCHA
                     sitekey="6LeEELAiAAAAAI0q8_XWd0Qa3borS6jvKizvVSAA"
+                    onChange={handleCaptcha}
+                    ref={recaptchaRef}
                   />
-                  
                   <span id="captcha" style={{ color: "red" }} />
                   <div className="mt-20">
                     <input
@@ -240,10 +244,7 @@ const FormModal = ({modalClose}) => {
           <Image rounded={true} src={images} />
         </div>
       </div>
-      
-    </Modal.Body>
-    
-    </>
+    </div>
   );
 };
 
@@ -274,15 +275,26 @@ const RequestBrochure = ({ theme = "desktop" }) => {
           </button>
         </div>
       )}
-      <Modal show={show} onHide={handleClose} dialogClassName="modal-main">
-        <Modal.Header>
-          <button type="button" className="close " onClick={handleClose}>
-            ×
-          </button>
-        </Modal.Header>
-        <FormModal modalClose={handleClose}/>
-      </Modal>
-      
+      <div
+        className={show?'modal fade show' :  'modal fade'}
+        id="exampleModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        style={{display:`${show?'block':'none'}`}}
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="close " onClick={handleClose}>
+                ×
+              </button>
+            </div>
+            <FormModal modalClose={handleClose} />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
